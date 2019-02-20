@@ -1,4 +1,3 @@
-
 export default (data) => ({
 
   setCountries (countries) {
@@ -20,8 +19,8 @@ export default (data) => ({
     data.selectedCountry = void 0
   },
 
-  setPictures(photos){
-    data.selectedCountry.picturesForCountry=photos.photo
+  setPictures (photos) {
+    data.selectedCountry.picturesForCountry = photos.photo
   },
 
   processResponse (loadedCountries) {
@@ -31,12 +30,10 @@ export default (data) => ({
     })
   },
 
-  
-
   sortOnName: (isAscending) => {
     data.displayedCountries = [].concat(data.allCountries).sort((country1, country2) => isAscending ? country1.name.localeCompare(country2.name) : country2.name.localeCompare(country1.name))
     data.sortAscending = isAscending
-    data.status.sorted= true
+    data.status.sorted = true
   }
 
 })

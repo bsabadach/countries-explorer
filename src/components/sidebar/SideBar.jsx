@@ -8,7 +8,7 @@ import ToolBar from './Toolbar'
 import Details from './Details'
 import reactor from '../../reactor'
 
-const {state, model} = reactor
+const {state} = reactor
 
 const view = {
   isCollapsed: false,
@@ -17,7 +17,7 @@ const view = {
     this.current = this.states.list()
     return this.current
   },
-  states:{
+  states: {
     list: () => view.create(view.isDetailsVisible, view.isCollapsed),
     details: () => view.create(view.isDetailsVisible, view.isCollapsed),
   },
@@ -69,5 +69,5 @@ const handlers = {
   }
 }
 
-export default component({model, handlers, view})
+export default component({state, handlers, view})
 

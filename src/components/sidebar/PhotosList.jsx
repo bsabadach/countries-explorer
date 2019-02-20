@@ -5,7 +5,7 @@ import patch from '../../core/sanbbdom-patcher'
 import component from '../../core/ObserverComponent'
 import reactor from '../../reactor'
 
-const {state, model} = reactor
+const {state} = reactor
 
 const url = (photo) => {
   const {farm, server, id, secret} = photo
@@ -44,6 +44,6 @@ const view = {
   }
 }
 
-export default component({model, view})
+export default component({state, view})
 
 

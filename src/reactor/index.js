@@ -4,10 +4,11 @@ import { model, Proposals } from './store'
 
 let instance = undefined
 
-const getOrCreate = (state, model, Proposals) => {
+const getOrCreate = (state, createModel, Proposals) => {
   if (instance) return instance
+  const model = createModel(state)
   const actions = createActions(model.receive.bind(model), Proposals)
-  instance = {state, actions, model}
+  instance = {state, actions}
   return instance
 }
 

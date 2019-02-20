@@ -6,8 +6,7 @@ import component from '../../core/ObserverComponent'
 
 import reactor from '../../reactor'
 
-const {state, actions, model} = reactor
-
+const {state, actions} = reactor
 
 const view = {
   init () {
@@ -28,7 +27,7 @@ const view = {
          class-active={!ascending}/>
     </div>
   ),
-  states:{
+  states: {
     ready: (sortAscending) => view.create(sortAscending)
   },
   observe (model) {
@@ -58,4 +57,4 @@ const handlers = {
   }
 }
 
-export default component({model, handlers, view})
+export default component({state, handlers, view})

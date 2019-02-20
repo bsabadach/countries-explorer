@@ -12,7 +12,7 @@ export const Proposals = Type({
   PicturesError: [Object]
 })
 
-export const createModel = (createMutations) => {
+const createModel = (createMutations) => (state) => {
 
   const data = {
     allCountries: [],
@@ -29,24 +29,8 @@ export const createModel = (createMutations) => {
     }
   }
 
-  let observers = []
-
   const mutations = createMutations(data)
   return {
-
-    addObserver (observer) {
-      observers.push(observer)
-    },
-
-    removeObserver (observer) {
-      observers = observers.filter(anObserver => {
-        return observer !== anObserver
-      })
-    },
-
-    notifyObservers () {
-      observers.forEach(observer => observer(this))
-    },
 
     get status () {
       return data.status
@@ -79,8 +63,7 @@ export const createModel = (createMutations) => {
         Pictures: (data) => mutations.setPictures(data.photos)
       }, proposal)
 
-      this.notifyObservers()
-
+      state.notifyObservers(this)
     },
   }
 

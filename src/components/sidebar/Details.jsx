@@ -6,7 +6,7 @@ import component from '../../core/ObserverComponent'
 import reactor from '../../reactor'
 import Photos from './PhotosList'
 
-const {state, actions, model} = reactor
+const {state, actions} = reactor
 
 const view = {
   init () {
@@ -50,6 +50,6 @@ const handlers = {
   }
 }
 
-export default component({model, handlers, view})
+export default component({state, handlers, view})
 
 

@@ -1,5 +1,7 @@
 export default ({
 
+  observers: [],
+
   initial (model) {
     return model.status.initial
   },
@@ -16,7 +18,7 @@ export default ({
     return model.status.loaded && model.selectedCountry !== void 0
   },
 
-  countryUnSelected(model){
+  countryUnSelected (model) {
     return this.ready(model) && !this.countrySelected(model)
   },
 
@@ -32,6 +34,20 @@ export default ({
 
   wasSorted (model) {
     return model.status.sorted && model.status.loaded
-  }
+  },
+
+  addObserver (observer) {
+    this.observers.push(observer)
+  },
+
+  removeObserver (observer) {
+    this.observers = this.observers.filter(anObserver => {
+      return observer !== anObserver
+    })
+  },
+
+  notifyObservers (model) {
+    this.observers.forEach(observer => observer(model))
+  },
 
 })

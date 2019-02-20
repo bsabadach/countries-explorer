@@ -6,7 +6,7 @@ import component from '../../core/ObserverComponent'
 import ListItem from './ListItem'
 import reactor from '../../reactor'
 
-const {state, actions, model} = reactor
+const {state, actions} = reactor
 
 
 const countriesItems = (countries) => countries.map(country => <ListItem country={country}
@@ -60,7 +60,7 @@ const handlers = {
   }
 }
 
-export default component({model, view})
+export default component({state, view})
 
 
 
