@@ -2,7 +2,7 @@
 import { html } from 'snabbdom-jsx'
 import patch from '../../core/sanbbdom-patcher'
 
-import component from '../../core/ObserverComponent'
+import component from '../../core/Component'
 import List from './List'
 import ToolBar from './Toolbar'
 import Details from './Details'

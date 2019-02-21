@@ -1,7 +1,7 @@
 /** @jsx html */
 import { html } from 'snabbdom-jsx'
 
-import component from '../../core/ObserverComponent'
+import component from '../../core/Component'
 
 export const CountriesItem = (country, onItemSelected) => {
 
