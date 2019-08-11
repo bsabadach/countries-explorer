@@ -1,15 +1,15 @@
-export default ({view, state, handlers}) => {
+export default ({view, observable}) => {
 
   const vnode = typeof view.init === 'function' ? view.init() : view
-  if (state) {
+  if (observable) {
     vnode.data = {
       ...vnode.data,
       hook: {
         create () {
-          state.addObserver(view.observe)
+          observable.subscribe(view.observe)
         },
         destroy () {
-          state.removeObserver(view.observe)
+          observable.unsubscribe(view.observe)
         }
       }
     }
@@ -17,7 +17,6 @@ export default ({view, state, handlers}) => {
 
   return {
     view,
-    handlers,
     render: () => vnode
   }
 }

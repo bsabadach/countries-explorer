@@ -1,15 +1,20 @@
 import createActions from './actions'
 import state from './state'
-import { model, Proposals } from './store'
+import {updates} from './updates'
+import createModel, {Proposals} from './model'
 
-let instance = undefined
 
-const getOrCreate = (state, createModel, Proposals) => {
-  if (instance) return instance
-  const model = createModel(state)
-  const actions = createActions(model.receive.bind(model), Proposals)
-  instance = {state, actions}
-  return instance
+const store = (state, createModel, Proposals) => {
+    if (!store.instance) {
+        const model = createModel(updates)
+        const actions = createActions(model.receive.bind(model), Proposals)
+        const observable = {
+            subscribe: model.subscribe.bind(model),
+            unsubscribe: model.unsubscribe.bind(model),
+        }
+        store.instance = {state, actions, observable}
+    }
+    return store.instance
 }
 
-export default getOrCreate(state, model, Proposals)
+export default store(state, createModel, Proposals)

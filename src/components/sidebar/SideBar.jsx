@@ -8,7 +8,7 @@ import ToolBar from './Toolbar'
 import Details from './Details'
 import reactor from '../../reactor'
 
-const {state} = reactor
+const {state,observable} = reactor
 
 const view = {
   isCollapsed: false,
@@ -69,5 +69,5 @@ const handlers = {
   }
 }
 
-export default component({state, handlers, view})
+export default component({observable, handlers, view})
 

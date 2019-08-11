@@ -5,7 +5,7 @@ import component from '../../core/Component'
 import { mapStyle, markerIcon } from './map-styles'
 import reactor from '../../reactor'
 
-const {state, actions} = reactor
+const {state, actions,observable} = reactor
 
 const handlers = {
   onMarkerClicked: (country) => {
@@ -94,7 +94,7 @@ const view = ({
   }
 })
 
-export default component({state, handlers, view})
+export default component({observable, handlers, view})
 
 
 

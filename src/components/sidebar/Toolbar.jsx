@@ -6,7 +6,7 @@ import component from '../../core/Component'
 
 import reactor from '../../reactor'
 
-const {state, actions} = reactor
+const {state, actions,observable} = reactor
 
 const view = {
   init () {
@@ -57,4 +57,4 @@ const handlers = {
   }
 }
 
-export default component({state, handlers, view})
+export default component({observable, handlers, view})
